@@ -14,7 +14,7 @@
 		<meta name="viewport" content="target-densitydpi=device-dpi"/>
 		<title>Auto Track</title>
 	
-		<link href="file here" rel="stylesheet" type="text/css"/>
+		<link href="css/style.css" rel="stylesheet" type="text/css"/>
 		<script src="javascrpit goes here" type="text/javascript"></script>
 	</head>
 
@@ -34,19 +34,20 @@
 			</fieldset>
 			<fieldset>
 				<legend>Service Info</legend>
-					<li>Is this mechanical?
+					<ol>
+						<li>Is this mechanical?
 							<ul>
 								<li><input type="radio" checked value="Yes" id="yes" name="mech" /></li><label for="yes">Yes</label>
 								<li><input type="radio" checked value="male" id="no" name="mech" /></li><label for="no">No</label>
 							</ul>	
-					<li>Is this a repeat service?
-						<ul>
-								<li><input type="radio" checked value="Yes" id="yes" name="serv" /></li><label for="yes">Yes</label>
-								<li><input type="radio" checked value="male" id="no" name="serv" /></li><label for="no">No</label>
-								<li><label for="Comment">What was the service or repair?</label><textarea id="auto" /></textarea></li>
-						</ul>	
+						<li>Is this a repeat service?
+							<ul>
+								<li><input type="radio" checked value="Yes" id="yea" name="serv" /></li><label for="yes">Yes</label>
+								<li><input type="radio" checked value="male" id="nea" name="serv" /></li><label for="no">No</label>
+								<li><label for="Comment">What Happened?</label><textarea id="what" /></textarea></li>
+							</ul>	
 					
-					</li>		
+					</ol>		
 			</fieldset>
 			<button type="button" id="submit">Submit</button>
 			<a href="#" id="clear">Clear stored data!</a>
