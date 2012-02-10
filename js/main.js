@@ -1,6 +1,8 @@
 //Activity 2
 //VFW 1202
 //Darius Clark
+//Part 2
+
 
 // wait until the DOM is ready
 window.addEventListener("DOMContentLoaded", function(){
