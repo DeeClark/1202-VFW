@@ -1,6 +1,8 @@
-//Activity 2
+//Activity 3
 //VFW 1202
 //Darius Clark
+//02-16-12
+
 
 // wait until the DOM is ready
 window.addEventListener("DOMContentLoaded", function(){
@@ -125,6 +127,29 @@ window.addEventListener("DOMContentLoaded", function(){
 		linksLi.appendChild(deleteLink);
 	
 	}
+	function editItem(){
+		//get data from local storage
+		var value = localStorage.getItem(this.key);
+		var item =JSON.parse(value);
+		
+		toggleControls("off");//this has not been created
+		
+		$('make').value = item.make[1];
+		$('auto').value = item.auto[1];
+		$('miles').value = item.miles[1];
+		$('save').value = item.save[1];
+		//radio buttons will not work.  must re watch week 3 vid js.3
+		$('mech').value = item.mech[1];
+		$('what').value = item.what[1];
+		
+		//remove the initial listener
+		save.removeEventListener("click", storeData);
+		$('submit').value = "edit event";
+		var editSubmit = $('submit');
+		editSubmit.addEventListener("click", validate);
+        editSubmit.key = this.key;
+
+	}	
 	//week 3
 
 	function clearLocal(){
@@ -137,6 +162,10 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	}
+	
+	function validate(){
+	
+	}
 	//variable defaults
 		
 	var  cars = ["--Vehicles--","Chevy","Ford","GM","Other"],
@@ -146,12 +175,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	makeCats();
 
 
-	/*set link & submit click events
+	//set link & submit click events
 	var displayLink =$('display');
 	displayLink.addEventListener("click", getData);
 	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal);
-	*/
+	
 	var save = $('submit');
 	save.addEventListener("click", storeData);
 
