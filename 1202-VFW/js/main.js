@@ -45,6 +45,27 @@ window.addEventListener("DOMContentLoaded", function(){
 			saveValue = "No"
 			}
 		}	
+		
+		
+	function toggleControls(n){
+        switch(n){
+            case "on":
+                $('events').style.display = "none";
+                $('clear').style.display = "inline";
+                $('display').style.display = "none";
+                $('submit').style.display = "inline";
+                break;
+            case "off":
+                $('events').style.display = "block";
+                $('clear').style.display = "inline";
+                $('display').style.display = "inline";
+                $('submit').style.display = "none";
+                $('items').style.display = "none";
+                break;
+            default:
+                return false;
+        }
+    }
 	
 	function storeData(){
 		var id  	= Math.floor(Math.random()*10000001);
@@ -72,6 +93,11 @@ window.addEventListener("DOMContentLoaded", function(){
 			alert("Event Recorded!");
 	}
 	function getData(){
+		toggleControls("on");
+		if (localStorage.lenth === 0){
+			alert("No history to display. Defaults added");
+			autoAddData();
+		}
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
 		var makeList = document.createElement('ul');
@@ -89,6 +115,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
 			makeli.appendChild(makeSubList);
+		//	getImage(obj.make[0]makeSubList);
 			for(var n in obj){
 				var makeSubli = document.createElement('li');
 				makeSubList.appendChild(makeSubli);
@@ -105,6 +132,24 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 	}
 	//
+	function getImage(makName){
+		var imageLi = document.createElement('li');
+		makeSubList.appendChild(imageLi);
+		var newImage = document.createElement('img');
+		var setSrc = newImage.setAttribute('src','images/'+ makName +'.png');
+		imageLi.appendChild(newImage)
+	
+	}
+	
+	function autoAddData(){
+		for(var n in json){
+			var id =  Math.floor(Math.random()*10000001);
+			localStorage.setItem(id, JSON.stringify(json[n]))
+		}
+	
+	
+	}
+	
 	function makeItemLinks(key, linksLi){
 		//add edit each link
 		var editLink = document.createElement('a');
@@ -132,14 +177,14 @@ window.addEventListener("DOMContentLoaded", function(){
 		var value = localStorage.getItem(this.key);
 		var item =JSON.parse(value);
 		
-		toggleControls("off");//this has not been created
+		toggleControls("off");
 		
 		$('make').value = item.make[1];
 		$('auto').value = item.auto[1];
 		$('miles').value = item.miles[1];
 		$('save').value = item.save[1];
 		//radio buttons will not work.  must re watch week 3 vid js.3
-		$('mech').value = item.mech[1];
+		$('yes').value = item.mech[1];
 		$('what').value = item.what[1];
 		
 		//remove the initial listener
