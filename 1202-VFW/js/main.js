@@ -16,12 +16,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	//create select field element and populate with options.
 	function makeCats(){
 		var formTag = document.getElementsByTagName("form"),//form tag is an array
-			selectLi = $('make'),
-			makeSelect = document.createElement('make');
+			selectLi = $('select'),
+			makeSelect = document.createElement('select');
 			makeSelect.setAttribute("id","group");
-		for(var i=0,j=cars.lenth; i<j; i++){
+		for(var i=0,j=make.lenth; i<j; i++){
 			var makeOption = document.createElement('option');
-			var optText = cars[i];
+			var optText = make[i];
 			makeOption.setAttribute("value", optText);
 			makeOption.innerHTML = optText;
 			makeSelect.appendChild(makeOption);
@@ -41,8 +41,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	function getCheckboxValue(){
 		if($('save').checked){
 			saveValue = $('save').value;
-	}else{
-			saveValue = "No"
+			}else{
+				saveValue = "No"
 			}
 		}	
 		
@@ -75,7 +75,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		//gather up all our form field values and store in an object.
 		//Object properties contain array with the form label and input value.
 		var item  	= {};
-			item.make	=["Make:", $('make').value];//this needs to be created
+			item.group	=["Make:", $('group').value];//this needs to be created
 			item.auto	=["Vehicle:", $('auto').value];
 			item.miles	=["Mileage:", $('miles').value];
 			
@@ -213,7 +213,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	//variable defaults
 		
-	var  cars = ["--Vehicles--","Chevy","Ford","GM","Other"],
+	var  make = ["--Vehicles--","Chevy","Ford","GM","Other"],
 		saveValue = "No",
 		mechValue
 	;	
